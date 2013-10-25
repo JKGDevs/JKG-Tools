@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+# Visual Studio
+*.dll
+*.exe
+
+*.sdf
+*.opensdf
