@@ -40,6 +40,13 @@ private slots:
 	void onNewScript();
 	void onNewDialogue();
 	void onNewQuest();
+	void onNewFont();
+	void onNewItem();
+	void onNewWeapon();
+	void onNewArmor();
+	void onNewHilt();
+	void onNewStyle();
+	void onNewCrystal();
 	void onOpen();
 	void onSave();
 	void onSaveAs();
@@ -56,7 +63,6 @@ private slots:
 	void onSubWindowActivated();
 
 	void onExtCommand(int cmd);
-
 };
 
 #endif // JKGSTUDIO_H

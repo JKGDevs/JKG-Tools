@@ -36,6 +36,9 @@
     <property name="documentMode">
      <bool>true</bool>
     </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Triangular</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -61,7 +64,15 @@
      <addaction name="actionQuest"/>
      <addaction name="separator"/>
      <addaction name="actionFont"/>
-     <addaction name="actionShader"/>
+     <addaction name="separator"/>
+     <addaction name="actionWeapon"/>
+     <addaction name="actionItem"/>
+     <addaction name="actionArmor"/>
+     <addaction name="separator"/>
+     <addaction name="actionHilt"/>
+     <addaction name="actionLightsaberStyle"/>
+     <addaction name="actionCrystal"/>
+     <addaction name="separator"/>
     </widget>
     <addaction name="menuNew"/>
     <addaction name="actionOpen"/>
@@ -259,11 +270,6 @@
     <string>Font</string>
    </property>
   </action>
-  <action name="actionShader">
-   <property name="text">
-    <string>GPU Shader</string>
-   </property>
-  </action>
   <action name="actionRedo">
    <property name="icon">
     <iconset resource="jkgstudio.qrc">
@@ -389,6 +395,47 @@
    </property>
    <property name="shortcut">
     <string>Del</string>
+   </property>
+  </action>
+  <action name="actionWeapon">
+   <property name="text">
+    <string>Weapon</string>
+   </property>
+  </action>
+  <action name="actionItem">
+   <property name="icon">
+    <iconset resource="jkgstudio.qrc">
+     <normaloff>:/icons/Resources/Graphics/Icons/new-item.png</normaloff>:/icons/Resources/Graphics/Icons/new-item.png</iconset>
+   </property>
+   <property name="text">
+    <string>Item</string>
+   </property>
+  </action>
+  <action name="actionArmor">
+   <property name="icon">
+    <iconset resource="jkgstudio.qrc">
+     <normaloff>:/icons/Resources/Graphics/Icons/new-armor.png</normaloff>:/icons/Resources/Graphics/Icons/new-armor.png</iconset>
+   </property>
+   <property name="text">
+    <string>Armor</string>
+   </property>
+  </action>
+  <action name="actionHilt">
+   <property name="text">
+    <string>Hilt</string>
+   </property>
+  </action>
+  <action name="actionLightsaberStyle">
+   <property name="text">
+    <string>Lightsaber Style</string>
+   </property>
+   <property name="toolTip">
+    <string>Lightsaber Style</string>
+   </property>
+  </action>
+  <action name="actionCrystal">
+   <property name="text">
+    <string>Crystal</string>
    </property>
   </action>
  </widget>
@@ -637,6 +684,118 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionFont</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onNewFont()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionArmor</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onNewArmor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionWeapon</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onNewWeapon()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCrystal</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onNewCrystal()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionHilt</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onNewHilt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLightsaberStyle</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onNewStyle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionItem</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onNewItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onOpen()</slot>
@@ -654,5 +813,12 @@
   <slot>onPaste()</slot>
   <slot>onClose()</slot>
   <slot>onSubWindowActivated()</slot>
+  <slot>onNewItem()</slot>
+  <slot>onNewWeapon()</slot>
+  <slot>onNewArmor()</slot>
+  <slot>onNewHilt()</slot>
+  <slot>onNewStyle()</slot>
+  <slot>onNewCrystal()</slot>
+  <slot>onNewFont()</slot>
  </slots>
 </ui>

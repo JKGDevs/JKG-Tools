@@ -71,6 +71,7 @@ JKGStudio::JKGStudio(QWidget *parent, Qt::WFlags flags)
 		tabbar->setExpanding(false);
 	
 	tabbar->setTabsClosable(true);
+	connect(tabbar, SIGNAL(tabCloseRequested(int)), this, SLOT(onClose(void)));
 	tabbar->setMovable(true);
 
 	delete ui.centralWidget;
@@ -248,6 +249,41 @@ void JKGStudio::onNewDialogue()
 void JKGStudio::onNewQuest()
 {
 	QMessageBox::information(this, "Not implemented", "Quests are not yet implemented");
+}
+
+void JKGStudio::onNewFont()
+{
+	QMessageBox::information(this, "Not implemented", "Fonts are currently not integrated into JKG Studio.");
+}
+
+void JKGStudio::onNewItem()
+{
+	QMessageBox::information(this, "Not implemented", "Items are currently not integrated into JKG Studio.");
+}
+
+void JKGStudio::onNewWeapon()
+{
+	QMessageBox::information(this, "Not implemented", "Weapons are currently not integrated into JKG Studio.");
+}
+
+void JKGStudio::onNewArmor()
+{
+	QMessageBox::information(this, "Not implemented", "Armor is currently not integrated into JKG Studio.");
+}
+
+void JKGStudio::onNewHilt()
+{
+	QMessageBox::information(this, "Not implemented", "Hilts are currently not integrated into JKG Studio.");
+}
+
+void JKGStudio::onNewStyle()
+{
+	QMessageBox::information(this, "Not implemented", "Lightsaber Styles are currently not integrated into JKG Studio.");
+}
+
+void JKGStudio::onNewCrystal()
+{
+	QMessageBox::information(this, "Not implemented", "Crystals are currently not integrated into JKG Studio.");
 }
 
 void JKGStudio::onOpen()
