@@ -93,8 +93,6 @@
     <property name="title">
      <string>&amp;Tools</string>
     </property>
-    <addaction name="actionDigitally_sign_PK3"/>
-    <addaction name="separator"/>
     <addaction name="actionPreferences"/>
    </widget>
    <widget class="QMenu" name="menuDlgNodes">
@@ -284,15 +282,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+F4</string>
-   </property>
-  </action>
-  <action name="actionDigitally_sign_PK3">
-   <property name="icon">
-    <iconset resource="jkgstudio.qrc">
-     <normaloff>:/icons/signpk3.png</normaloff>:/icons/signpk3.png</iconset>
-   </property>
-   <property name="text">
-    <string>Digitally sign PK3</string>
    </property>
   </action>
   <action name="actionPreferences">

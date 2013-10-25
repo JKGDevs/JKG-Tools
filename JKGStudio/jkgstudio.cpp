@@ -70,9 +70,8 @@ JKGStudio::JKGStudio(QWidget *parent, Qt::WFlags flags)
 	if (tabbar)
 		tabbar->setExpanding(false);
 	
-	// Qt 4.8 merge
-	m_mdi->setTabsClosable(true);
-	m_mdi->setTabsMovable(true);
+	tabbar->setTabsClosable(true);
+	tabbar->setMovable(true);
 
 	delete ui.centralWidget;
 

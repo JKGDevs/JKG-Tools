@@ -15,6 +15,17 @@
 # Visual Studio
 *.dll
 *.exe
-
+*.user
+*.suo
 *.sdf
 *.opensdf
+*.ilk
+*.pdb
+*ipch/*
+
+JKGStudio/JKGStudio.vcxproj.user
+
+# Folder directories that we can ignore
+*/[Dd]ebug/*
+*/[Gg]enerated[Ff]iles/*
+*/[Rr]elease/*
