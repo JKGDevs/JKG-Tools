@@ -1,6 +1,10 @@
 _G holds global environment, setfenv changes environments
 _VERSION current interpreter version "Lua 5.0"
 assert (v [, message]) error if v nil or false, otherwise returns v
+cmds.Add(command, func) Binds the function to that command
+cmds.Remove(command) Unbinds the command
+cmds.AddRcon(command, func) Binds the function to that command (rcon)
+cmds.RemoveRcon(command) Unbinds the command (rcon)
 collectgarbage ([limit]) set threshold to limit KBytes, default 0, may run GC
 coroutine.create (f) creates coroutine from function f, returns coroutine
 coroutine.resume (co, val1, ...) continues execution of co, returns bool status plus any values
@@ -17,16 +21,22 @@ debug.setlocal (level, local, value) sets local variable with index local at sta
 debug.setupvalue (func, up, value) sets upvalue with index up of function func with value
 debug.traceback ([message]) returns a string with a traceback of the call stack
 dofile (filename) executes as Lua chunk, default stdin, returns value
+ents.GetByIndex (index)
+ents.GetAll ()
+ents.GetByClass (class)
+ents.GetByClassI (class)
+ents.GetByName (name)
+ents.GetByNameI (name)
 error (message [, level]) terminates protected func, never returns, level 1 (default), 2=parent
-file.close () closes file
-file.flush () saves any written data to file
-file.lines () returns iterator function to return lines, nil ends
-file.read (format1, ...) reads file according to given formats, returns read values or nil
-file.seek ([whence] [, offset]) sets file pos, whence="set"|"cur"|"end", defaults "curr",0, returns file pos
-file.write (value1, ...) writes strings or numbers to file
+file.Read(file:string):string Returns contents of a file
+file.Write(file:string, buffer:string):nil Writes to a file
+file.Exists(file:string):boolean Checks if a file exists
+file.ListFiles(path:string, extension:string:string_table Returns a string table listing all of the files in a directory (from PK3s)
 gcinfo () returns dynamic mem in use (KB), and current GC threshold (KB)
 getfenv (f) gets env, f can be a function or number (stack level, default=1), 0=global env
 getmetatable (object) returns metatable of given object, otherwise nil
+hook.Add(hookname, uniqueid, func, [priority]) Hooks the function to the specified event. uniqueid is used to avoid duplicate bindings
+hook.Remove(hookname, uniqueid) Removes the specified hook
 io.close ([file]) closes file, or the default output file
 io.flush () flushes the default output file
 io.input ([file]) opens file in text mode, sets as default input file, or returns current default input file
@@ -41,9 +51,37 @@ io.tmpfile () returns a handle for a temporary file, opened in update mode
 io.type (obj) returns "file" if obj is an open file handle, "close file" if closed, or nil if not a file handle
 io.write (value1, ...) writes strings or numbers to file
 ipairs (t) returns an iterator function, table t and 0
+json.RegisterFile(fileName) Loads a JSON file (and returns the root node index)
+json.GetObjectItem(node, desiredNodeName) Retrieves a child node index of the node
+json.Clear() When we are done with a file, call this to clean stuff up.
+json.GetFirstObject(node) Returns first child node index of a node
+json.GetNextObject(node) Returns handle to next JSON object
+json.IsNumber(node) Returns true if the node is a number
+json.IsObject(node) Returns true if the node is an object
+json.IsBoolean(node) Returns true if the node is a boolean
+json.ToString(node) Returns a string version of the node's value
+json.ToNumber(node) Returns a number version of the node's value
+json.ToInteger(node) Returns an integer version of the node's value
+json.ToBoolean(node) Returns a boolean version of the node's value
+json.ToStringOpt(node, optvalue) Returns a string version of the node's value (or optvalue if not found)
+json.ToNumberOpt(node, optvalue) Returns a number version of the node's value (or optvalue if not found)
+json.ToIntegerOpt(node, optvalue) Returns an integer version of the node's value (or optvalue if not found)
+json.ToBooleanOpt(node, optvalue) Returns a boolean version of the node's value (or optvalue if not found)
+json.GetArraySize(node) Returns number of elements in an array node
+json.GetArrayItem(node, elementnum) Returns handle to JSON object in array
+json.RegisterStream(maxdepth, formatted) Starts a stream for writing JSON
+json.FinishStream(filename) Finishes the current stream
+json.BeginObject(object) Writes an object. If the object handle is 0, then we will pass NULL
+json.EndObject() Ends the highest-scope object
+json.BeginArray(object) Same as json.BeginObject, but treats the value as an array
+json.WriteString(key, value) Writes a string object. key can be "0" for NULL (arrays)
+json.WriteInteger(key, value) Writes an integer object. key can be "0" for NULL (arrays)
+json.WriteNumber(key, value) Writes a number object. key can be "0" for NULL (arrays)
+json.WriteBoolean(key, value) Writes a boolean objecet. key can be "0" for NULL (arrays)
 loadfile (filename) loads chunk without execution, returns chunk as function, else nil plus error
 loadlib (libname, funcname) links to dynamic library libname, returns funcname as a C function
 loadstring (string [, chunkname]) loads string as chunk, returns chunk as function, else nil plus error
+log (...) prints to log. Args are concatenated strings. 
 math.abs (v) returns absolute value of v
 math.acos (v) returns arc cosine value of v in radians
 math.asin (v) returns arc sine value of v in radians
@@ -71,11 +109,17 @@ math.tan (rad) returns tangent value of angle rad
 next (table [, index]) returns next index,value pair, if index=nil (default), returns first index
 pairs (t) returns the next function and table t plus a nil, iterates over all key-value pairs
 pcall (f, arg1, arg2, ...) protected mode call, catches errors, returns status code first (true=success)
-print (e1, e2, ...) prints values to stdout using tostring
+players.GetByID(ID:number):player/nil Returns player based on the specified client ID
+players.GetByName(name:string):player/nil Returns the player with the specified name (or nil if not found)
+players.GetAll():table Returns a table with all players
+print (e1, e2, ...) prints values to console using tostring
+printnn (...) print to console without adding a newline
+PrintTable(table) Displays the contents of the specified table in the console
 rawequal (v1, v2) non-metamethod v1==v2, returns boolean
 rawget (table, index) non-metamethod get value of table[index], index != nil
 rawset (table, index, value) non-metamethod set value of table[index], index != nil
 require (packagename) loads package, updates _LOADED, returns boolean
+securitylog (...) Prints to the security log.
 setfenv (f, table) sets env, f can be a function or number (stack level, default=1), 0=global env
 setmetatable (table, metatable) sets metatable, nil to remove metatable
 string.byte (s [, i]) returns numerical code, nil if index out of range, default i=1
@@ -90,6 +134,27 @@ string.lower (s) returns string with letters in lower case
 string.rep (s, n) returns string with n copies of string s
 string.sub (s, i [, j]) returns substring from index i to j of s, default j=-1 (string length)
 string.upper (s) returns string with letters in upper case
+sys.GetCvarString(cvarname) Returns string value of specified cvar
+sys.GetCvarInt(cvarname) Returns int value of specified cvar
+sys.GetCvarFloat(cvarname) Returns float value of specified cvar
+sys.SetCvar(cvarname, value) Sets cvar to the specified value
+sys.SetCS(ID, value) Sets configstring <ID> to the specified value
+sys.GetCS(ID) Returns string value of a configstring <ID>
+sys.Time() Returns current server time (level.time)
+sys.Milliseconds() Returns amount of milliseconds elapsed since server started
+sys.Command(command) Executes the specified command
+sys.RemapShader(original, new) Replaces one shader <original> with another <new>
+sys.EffectIndex(effect) Returns the effect ID for an effect name
+sys.PlayEffect(id, origin[, angles]) Plays the specified effect
+sys.RadiusDamage(origin, [attacker,] damage, radius, ignore, missile, meansofdeath) Does radius damage
+sys.PlaySound(origin, sound, channel) Plays sound effect
+sys.PlaySoundIdx(origin, soundid, channel) Plays sound effect, given a sound id
+sys.SoundIndex(sound) Returns sound ID of specified sound
+sys.WeaponClipSize(weapon) Returns clipsize of the specified weapon
+sys.AmmoLimit(ammotype) Returns the ammo limit of an ammotype
+sys.MapName() Returns the BSP name of the current map
+sys.SpotWouldTelefrag(ent, location) Returns whether or not teleporting the ent to location would cause a telefrag
+sys.StripColorcodes(text) Returns the passed string with colorcodes removed
 table.concat (table [, sep [, i [, j]]]) returns concatenated table elements i to j separated by sep
 table.foreach (table, f) executes f(index,value) over all elements of table, returns first non-nil of f
 table.foreachi (table, f) executes f(index,value) in sequential order 1 to n, returns first non-nil of f
@@ -104,10 +169,5 @@ type (v) returns type of v as a string
 unpack (list) returns all elements from list
 xpcall (f, err) pcall function f with new error handler err
 print (msg) Displays msg in the console
-include (file)
-ents.GetByIndex (index)
-ents.GetAll ()
-ents.GetByClass (class)
-ents.GetByClassI (class)
-ents.GetByName (name)
-ents.GetByNameI (name)
+include (file) includes a file
+Vector(x:number, y:number, z:number):vector Constructs a vector
