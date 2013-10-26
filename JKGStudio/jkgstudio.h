@@ -62,6 +62,8 @@ private slots:
 
 	void onSubWindowActivated();
 
+	void onAboutJKGStudio();
+
 	void onExtCommand(int cmd);
 };
 

@@ -404,3 +404,13 @@ void JKGStudio::onExtCommand(int cmd)
 
 	activeSubWindow()->extCommand((MdiSubBase::eMdiExtCommands)cmd);
 }
+
+void JKGStudio::onAboutJKGStudio(void)
+{
+	QMessageBox msg(this);
+	msg.setIcon(QMessageBox::Information);
+	msg.setWindowTitle("About JKG Studio");
+	msg.addButton("OK", QMessageBox::RejectRole);
+	msg.setText("Jedi Knight Galaxies (c) 2008-2013\r\nJKG Studio (c) 2010-2013\r\nDeveloped by JKG Team\r\n\r\nUses some icons by Yusuke Kamiyamane\r\nLicensed under Creative Commons 3.0 License.");
+	msg.exec();
+}

@@ -796,6 +796,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionAbout_JKG_Studio</sender>
+   <signal>triggered()</signal>
+   <receiver>JKGStudioClass</receiver>
+   <slot>onAboutJKGStudio()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onOpen()</slot>
@@ -820,5 +836,6 @@
   <slot>onNewStyle()</slot>
   <slot>onNewCrystal()</slot>
   <slot>onNewFont()</slot>
+  <slot>onAboutJKGStudio()</slot>
  </slots>
 </ui>
